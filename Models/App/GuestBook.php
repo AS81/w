@@ -1,22 +1,25 @@
 <?php
 class GuestBook
 {
-    //protected $path;
-    public $path;
+    protected $path;
+    protected $text;
     public $records;
     public function __construct($path){
         $this->path=$path;
+    }
+
+    public function getData(){
         $records=[];
         $records=file($this->path);
         return $records;
     }
 
-    public function getData(){
-
-    }
-
     public function append($text){
-
+        $this->text=$text;
+        $records=[];
+        $records=$this->getData();
+        $records[]=$this->text;
+        return $records;
     }
 
     public function save(){

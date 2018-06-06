@@ -8,10 +8,16 @@
 Гостевая книга.
 <?php
 require __DIR__.'/../Models/App/GuestBook.php';
-$pathDb=__DIR__.'/../Db/db.txt';
+$pathDb=__DIR__.'/db.txt';
 $gb = new guestbook($pathDb);
-print_r($gb);
-
+echo "<hr>";
+foreach ($gb->getData() as $key=>$rec) {
+    $key1=$key+1;
+    echo $key1. ' гостевая запись из '.count($gb->getData()).':<br>';
+    echo $rec.'<br><br>';
+}
+echo "<hr>";
+var_dump(($gb->append('4 stroka я строка 4')));
 ?>
 </body>
 </html>
