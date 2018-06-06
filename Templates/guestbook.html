@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang ="ru">
+<head>
+    <meta charset="utf-8">
+    <title>PHP1_Home-L4</title>
+</head>
+<body>
+Гостевая книга.
+<?php
+require __DIR__.'/../Models/App/GuestBook.php';
+$gb = new guestbook(__DIR__.'\Db\db.txt');
+print_r($gb);
+
+?>
+</body>
+</html>
