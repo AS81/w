@@ -8,17 +8,16 @@
 <body>
 <h4>Гостевая книга</h4>
 <?php
-require __DIR__.'/functions.php';
 require __DIR__.'/classes/TextFile.php';
 require __DIR__.'/classes/GuestBook.php';
 $gb = new GuestBook(__DIR__.'/Db.txt');
-var_dump($gb->getData()); 
-var_dump($gb->append('tratata'));
-$gb->save();
+//var_dump($gb->getData()); 
+//var_dump($gb->append('tratata'));
+//$gb->save();
 
 echo '<hr><hr><hr>';
 $lines=[];
-$lines=read(__DIR__.'/Db.txt');
+$lines=$gb->getData();
 foreach ($lines as $key => $value) { ?>
     <p><?php echo $value; ?></p>
 <?php }
