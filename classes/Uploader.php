@@ -1,7 +1,7 @@
 <?php
 class Uploader{
     protected $name;
-
+    protected $path;
     public function __construct($name){
         $this->name=$name;
     }
@@ -20,14 +20,20 @@ class Uploader{
         if (true === $this->isUpladed()){
             $filename=$_FILES[$this->name]['name'];
             $i=0;
-            while (file_exists(__DIR__.'/uploads/'.$filename)) {
+            while (file_exists($this->path.$filename)) {
                  $i++;
                  $filename=$i.'_'.$_FILES[$this->name]['name'];
             }
-            move_uploaded_file($_FILES['newfile']['tmp_name'], __DIR__.'/uploads/'.$filename);
-            echo "Файл загружен";
+            move_uploaded_file($_FILES[$this->name]['tmp_name'], $this->path.$filename);
+            return "Файл загружен";
+        } else {
+            return "Возникла ошибка при загрузке файла";
         }
+    }
 
+    public function path($path){
+        $this->path=$path;
+        return $this;
     }
 }
 
