@@ -9,6 +9,7 @@
 <h4>Гостевая книга</h4>
 <?php
 require __DIR__.'/functions.php';
+require __DIR__.'/classes/TextFile.php';
 require __DIR__.'/classes/GuestBook.php';
 $gb = new GuestBook(__DIR__.'/Db.txt');
 var_dump($gb->getData()); 
